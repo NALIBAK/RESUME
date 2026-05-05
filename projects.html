@@ -398,20 +398,13 @@
     <!-- Projects grid -->
     <div class="projects-grid" id="projects-grid">
 
-      <!-- CARD 1 — AIRA -->
+      <!-- CARD 1 — AIRA (no live demo, emoji only) -->
       <article class="card">
-        <div class="card-preview" onclick="window.open('https://github.com/NALIBAK/management-system','_blank')" title="Open AIRA">
-          <img
-            data-src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://github.com/NALIBAK/management-system"
-            alt="AIRA College Management System preview"
-            loading="lazy" decoding="async"
-            onerror="this.style.display='none';this.parentElement.querySelector('.card-placeholder').style.display='flex'"
-          >
-          <div class="card-placeholder" style="display:none;">
+        <div class="card-preview" style="cursor:default;">
+          <div class="card-placeholder" style="display:flex; background: linear-gradient(135deg, rgba(255,180,0,0.08), rgba(120,80,255,0.10));">
             <span class="ph-emoji">🏛️</span>
             <span>AIRA Management System</span>
           </div>
-          <div class="card-preview-overlay"><span class="overlay-pill">Open ↗</span></div>
         </div>
         <div class="card-body">
           <h2 class="card-title">AIRA — AI College Management System</h2>
@@ -425,25 +418,19 @@
             <span class="badge">JWT</span>
           </div>
           <div class="card-actions">
-            <a href="https://github.com/NALIBAK/management-system" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
-            <a href="https://github.com/NALIBAK/management-system" target="_blank" rel="noopener" class="btn btn-accent">Open ↗</a>
+            <a href="https://github.com/NALIBAK/management-system" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub</a>
           </div>
         </div>
       </article>
 
-      <!-- CARD 2 — Task Manager -->
+      <!-- CARD 2 — Task Manager (local screenshot) -->
       <article class="card">
         <div class="card-preview" onclick="window.open('https://nalibak.github.io/task/','_blank')" title="Open Task Manager">
           <img
-            data-src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://nalibak.github.io/task/"
+            src="./assets/images/screenshots/preview-task.png"
             alt="Task Manager preview"
-            loading="lazy" decoding="async"
-            onerror="this.style.display='none';this.parentElement.querySelector('.card-placeholder').style.display='flex'"
+            width="1280" height="720"
           >
-          <div class="card-placeholder" style="display:none;">
-            <span class="ph-emoji">✅</span>
-            <span>Task Manager</span>
-          </div>
           <div class="card-preview-overlay"><span class="overlay-pill">Open ↗</span></div>
         </div>
         <div class="card-body">
@@ -461,19 +448,14 @@
         </div>
       </article>
 
-      <!-- CARD 3 — Thoughts PWA -->
+      <!-- CARD 3 — Thoughts PWA (local screenshot) -->
       <article class="card">
         <div class="card-preview" onclick="window.open('https://nalibak.github.io/thoughts/','_blank')" title="Open Thoughts PWA">
           <img
-            data-src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://nalibak.github.io/thoughts/"
+            src="./assets/images/screenshots/preview-thoughts.png"
             alt="Thoughts PWA preview"
-            loading="lazy" decoding="async"
-            onerror="this.style.display='none';this.parentElement.querySelector('.card-placeholder').style.display='flex'"
+            width="1280" height="720"
           >
-          <div class="card-placeholder" style="display:none;">
-            <span class="ph-emoji">📓</span>
-            <span>Thoughts PWA</span>
-          </div>
           <div class="card-preview-overlay"><span class="overlay-pill">Open ↗</span></div>
         </div>
         <div class="card-body">
@@ -492,19 +474,14 @@
         </div>
       </article>
 
-      <!-- CARD 4 — Portfolio Website -->
+      <!-- CARD 4 — Portfolio Website (local screenshot) -->
       <article class="card">
         <div class="card-preview" onclick="window.open('https://nalibak.github.io/RESUME/','_blank')" title="Open Portfolio">
           <img
-            data-src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://nalibak.github.io/RESUME/"
+            src="./assets/images/screenshots/preview-portfolio.png"
             alt="Portfolio Website preview"
-            loading="lazy" decoding="async"
-            onerror="this.style.display='none';this.parentElement.querySelector('.card-placeholder').style.display='flex'"
+            width="1280" height="720"
           >
-          <div class="card-placeholder" style="display:none;">
-            <span class="ph-emoji">🌐</span>
-            <span>Personal Portfolio</span>
-          </div>
           <div class="card-preview-overlay"><span class="overlay-pill">Open ↗</span></div>
         </div>
         <div class="card-body">
@@ -562,41 +539,6 @@
     <p>© 2025 Kabilan S S — Built with passion</p>
   </footer>
 
-  <script>
-    // Lazy-load thum.io screenshots via IntersectionObserver.
-    // Cards render instantly; images fetch only when the card enters the viewport.
-    (function () {
-      var imgs = document.querySelectorAll('img[data-src]');
-      if (!imgs.length) return;
 
-      function loadImg(img) {
-        var placeholder = img.parentElement.querySelector('.card-placeholder');
-        // Show placeholder while image is fetching
-        if (placeholder) placeholder.style.display = 'flex';
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.45s ease';
-        img.src = img.dataset.src;
-        img.onload = function () {
-          if (placeholder) placeholder.style.display = 'none';
-          img.style.opacity = '1';
-        };
-      }
-
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries, observer) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              loadImg(entry.target);
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { rootMargin: '120px' });
-        imgs.forEach(function (img) { io.observe(img); });
-      } else {
-        // Fallback for old browsers
-        imgs.forEach(loadImg);
-      }
-    })();
-  </script>
 </body>
 </html>
