@@ -166,6 +166,22 @@ main { padding: 15px; margin-bottom: 60px; position: relative; z-index: 1; }
   width: 30px; height: 3px; background: var(--accent); border-radius: 3px;
 }
 
+.section-title {
+  font-size: var(--fs-2);
+  color: var(--text-h);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
 /* ── SIDEBAR ── */
 .sidebar { margin-bottom: 15px; max-height: 112px; transition: var(--transition-2); }
 .sidebar.active { max-height: 1000px; }
