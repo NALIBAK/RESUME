@@ -121,7 +121,7 @@
           </li>
 
           <li class="navbar-item">
-            <a href="projects.html" class="navbar-link">Portfolio</a>
+            <button class="navbar-link" data-nav-link>Portfolio</button>
           </li>
 
           <li class="navbar-item">
@@ -279,6 +279,114 @@
             </li>
           </ul>
         </section>
+      </article>
+
+      <article class="portfolio" data-page="portfolio">
+        <header>
+          <h2 class="h2 article-title">My Projects</h2>
+        </header>
+
+        <div class="proj-grid">
+
+          <!-- CARD 1 — AIRA (no live demo) -->
+          <article class="proj-card">
+            <div class="proj-preview" style="cursor:default;">
+              <div class="proj-ph" style="background:linear-gradient(135deg,rgba(255,180,0,0.08),rgba(120,80,255,0.10));">
+                <span class="proj-ph-emoji">🏛️</span>
+                <span>AIRA Management System</span>
+              </div>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">AIRA — AI College Management System</h3>
+              <p class="proj-desc">Full-stack academic platform with 24 MCP tools, JWT RBAC, 38-table MySQL schema and dual LLM support.</p>
+              <div class="proj-badges">
+                <span class="proj-badge">Python</span><span class="proj-badge">Flask</span><span class="proj-badge">MySQL</span><span class="proj-badge">Ollama</span><span class="proj-badge">MCP</span><span class="proj-badge">JWT</span>
+              </div>
+              <div class="proj-actions">
+                <a href="https://github.com/NALIBAK/management-system" target="_blank" rel="noopener" class="proj-btn proj-btn-ghost">View on GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 2 — Task Manager -->
+          <article class="proj-card">
+            <div class="proj-preview" onclick="window.open('https://nalibak.github.io/task/','_blank')">
+              <img src="./assets/images/screenshots/preview-task.png" alt="Task Manager preview" width="1280" height="720">
+              <div class="proj-preview-overlay"><span class="proj-open-pill">Open ↗</span></div>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Task Manager</h3>
+              <p class="proj-desc">Lightweight browser-based task manager. No backend, fully client-side, instant and offline-ready.</p>
+              <div class="proj-badges">
+                <span class="proj-badge">HTML5</span><span class="proj-badge">CSS3</span><span class="proj-badge">JavaScript</span>
+              </div>
+              <div class="proj-actions">
+                <a href="https://github.com/NALIBAK/task" target="_blank" rel="noopener" class="proj-btn proj-btn-ghost">GitHub</a>
+                <a href="https://nalibak.github.io/task/" target="_blank" rel="noopener" class="proj-btn proj-btn-accent">Live Demo ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 3 — Thoughts PWA -->
+          <article class="proj-card">
+            <div class="proj-preview" onclick="window.open('https://nalibak.github.io/thoughts/','_blank')">
+              <img src="./assets/images/screenshots/preview-thoughts.png" alt="Thoughts PWA preview" width="1280" height="720">
+              <div class="proj-preview-overlay"><span class="proj-open-pill">Open ↗</span></div>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Thoughts PWA</h3>
+              <p class="proj-desc">Progressive Web App installable on Android. Personal notes and journal app, fully offline-capable.</p>
+              <div class="proj-badges">
+                <span class="proj-badge">HTML5</span><span class="proj-badge">CSS3</span><span class="proj-badge">JavaScript</span><span class="proj-badge">PWA</span>
+              </div>
+              <div class="proj-actions">
+                <a href="https://github.com/NALIBAK/thoughts" target="_blank" rel="noopener" class="proj-btn proj-btn-ghost">GitHub</a>
+                <a href="https://nalibak.github.io/thoughts/" target="_blank" rel="noopener" class="proj-btn proj-btn-accent">Live Demo ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 4 — Portfolio Website -->
+          <article class="proj-card">
+            <div class="proj-preview" onclick="window.open('https://nalibak.github.io/RESUME/','_blank')">
+              <img src="./assets/images/screenshots/preview-portfolio.png" alt="Portfolio Website preview" width="1280" height="720">
+              <div class="proj-preview-overlay"><span class="proj-open-pill">Open ↗</span></div>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Personal Portfolio Website</h3>
+              <p class="proj-desc">This portfolio — responsive, dark/light mode, liquid glass UI, built from scratch and hosted on GitHub Pages.</p>
+              <div class="proj-badges">
+                <span class="proj-badge">HTML5</span><span class="proj-badge">CSS3</span><span class="proj-badge">JavaScript</span><span class="proj-badge">GitHub Pages</span>
+              </div>
+              <div class="proj-actions">
+                <a href="https://github.com/NALIBAK/NALIBAK.github.io" target="_blank" rel="noopener" class="proj-btn proj-btn-ghost">GitHub</a>
+                <a href="https://nalibak.github.io/RESUME/" target="_blank" rel="noopener" class="proj-btn proj-btn-accent">Open ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 5 — S22 AI Lab (private) -->
+          <article class="proj-card">
+            <div class="proj-preview" style="cursor:default;">
+              <div class="proj-ph" style="background:linear-gradient(135deg,rgba(255,180,0,0.08),rgba(120,80,255,0.10));">
+                <span class="proj-ph-emoji">🤖</span>
+                <span>Private Infrastructure</span>
+              </div>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">S22 AI Lab — Self-Hosted AI Server</h3>
+              <p class="proj-desc">24/7 AI inference on Samsung S22 via Termux. Runs Ollama, ZeroClaw, Telegram bot and n8n with Twingate Zero Trust.</p>
+              <div class="proj-badges">
+                <span class="proj-badge">Termux</span><span class="proj-badge">Ollama</span><span class="proj-badge">Node.js</span><span class="proj-badge">Twingate</span><span class="proj-badge">n8n</span>
+              </div>
+              <div class="proj-actions">
+                <a href="https://github.com/NALIBAK" target="_blank" rel="noopener" class="proj-btn proj-btn-ghost">GitHub</a>
+                <span class="proj-btn proj-btn-off">Private Infra</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
       </article>
 
       <article class="contact" data-page="contact">

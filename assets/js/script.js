@@ -42,9 +42,10 @@ form.addEventListener('submit', async (e) => {
 // Page navigation
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = {
-  about: document.querySelector("[data-page='about']"),
-  resume: document.querySelector("[data-page='resume']"),
-  contact: document.querySelector("[data-page='contact']")
+  about:     document.querySelector("[data-page='about']"),
+  resume:    document.querySelector("[data-page='resume']"),
+  portfolio: document.querySelector("[data-page='portfolio']"),
+  contact:   document.querySelector("[data-page='contact']")
 };
 
 navigationLinks.forEach((link, index) => {
