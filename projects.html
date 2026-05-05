@@ -402,8 +402,9 @@
       <article class="card">
         <div class="card-preview" onclick="window.open('https://github.com/NALIBAK/management-system','_blank')" title="Open AIRA">
           <img
-            src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://github.com/NALIBAK/management-system"
+            data-src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://github.com/NALIBAK/management-system"
             alt="AIRA College Management System preview"
+            loading="lazy" decoding="async"
             onerror="this.style.display='none';this.parentElement.querySelector('.card-placeholder').style.display='flex'"
           >
           <div class="card-placeholder" style="display:none;">
@@ -434,8 +435,9 @@
       <article class="card">
         <div class="card-preview" onclick="window.open('https://nalibak.github.io/task/','_blank')" title="Open Task Manager">
           <img
-            src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://nalibak.github.io/task/"
+            data-src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://nalibak.github.io/task/"
             alt="Task Manager preview"
+            loading="lazy" decoding="async"
             onerror="this.style.display='none';this.parentElement.querySelector('.card-placeholder').style.display='flex'"
           >
           <div class="card-placeholder" style="display:none;">
@@ -463,8 +465,9 @@
       <article class="card">
         <div class="card-preview" onclick="window.open('https://nalibak.github.io/thoughts/','_blank')" title="Open Thoughts PWA">
           <img
-            src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://nalibak.github.io/thoughts/"
+            data-src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://nalibak.github.io/thoughts/"
             alt="Thoughts PWA preview"
+            loading="lazy" decoding="async"
             onerror="this.style.display='none';this.parentElement.querySelector('.card-placeholder').style.display='flex'"
           >
           <div class="card-placeholder" style="display:none;">
@@ -493,8 +496,9 @@
       <article class="card">
         <div class="card-preview" onclick="window.open('https://nalibak.github.io/RESUME/','_blank')" title="Open Portfolio">
           <img
-            src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://nalibak.github.io/RESUME/"
+            data-src="https://image.thum.io/get/width/1280/crop/720/noanimate/https://nalibak.github.io/RESUME/"
             alt="Portfolio Website preview"
+            loading="lazy" decoding="async"
             onerror="this.style.display='none';this.parentElement.querySelector('.card-placeholder').style.display='flex'"
           >
           <div class="card-placeholder" style="display:none;">
@@ -558,5 +562,41 @@
     <p>© 2025 Kabilan S S — Built with passion</p>
   </footer>
 
+  <script>
+    // Lazy-load thum.io screenshots via IntersectionObserver.
+    // Cards render instantly; images fetch only when the card enters the viewport.
+    (function () {
+      var imgs = document.querySelectorAll('img[data-src]');
+      if (!imgs.length) return;
+
+      function loadImg(img) {
+        var placeholder = img.parentElement.querySelector('.card-placeholder');
+        // Show placeholder while image is fetching
+        if (placeholder) placeholder.style.display = 'flex';
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.45s ease';
+        img.src = img.dataset.src;
+        img.onload = function () {
+          if (placeholder) placeholder.style.display = 'none';
+          img.style.opacity = '1';
+        };
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              loadImg(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '120px' });
+        imgs.forEach(function (img) { io.observe(img); });
+      } else {
+        // Fallback for old browsers
+        imgs.forEach(loadImg);
+      }
+    })();
+  </script>
 </body>
 </html>
