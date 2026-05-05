@@ -1855,3 +1855,144 @@ body, .sidebar, article, .navbar, .service-item,
   transition: background 0.35s ease, border-color 0.35s ease,
               color 0.35s ease, box-shadow 0.35s ease;
 }
+
+
+/* ─────────────────────────────────────────────────────────
+   LIGHT GLASS FIX — correct translucency to match Send
+   Message button. Overrides previous opaque light values.
+   ───────────────────────────────────────────────────────── */
+
+/* Richer background so blur is visible */
+[data-theme="light"] body { background: hsl(220, 16%, 86%); }
+
+[data-theme="light"] .sidebar,
+[data-theme="light"] article {
+  background: rgba(255,255,255,0.26) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border: 1px solid rgba(255,255,255,0.58) !important;
+  box-shadow: 0 8px 32px rgba(90,100,160,0.14),
+              0 1px 0 rgba(255,255,255,0.82) inset !important;
+}
+
+[data-theme="light"] .navbar {
+  background: rgba(255,255,255,0.28) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border-color: rgba(255,255,255,0.52) !important;
+  box-shadow: 0 2px 12px rgba(90,100,160,0.10) !important;
+}
+
+[data-theme="light"] .service-item {
+  background: rgba(255,255,255,0.22) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  border: 1px solid rgba(255,255,255,0.58) !important;
+  box-shadow: 0 4px 20px rgba(90,100,160,0.10),
+              0 1px 0 rgba(255,255,255,0.82) inset !important;
+}
+
+[data-theme="light"] .content-card {
+  background: rgba(255,255,255,0.22) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  border: 1px solid rgba(255,255,255,0.52) !important;
+  box-shadow: 0 4px 20px rgba(90,100,160,0.10) !important;
+}
+
+[data-theme="light"] .about-text {
+  background: rgba(255,255,255,0.22) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  border: 1px solid rgba(255,255,255,0.52) !important;
+  box-shadow: 0 4px 20px rgba(90,100,160,0.10) !important;
+}
+
+[data-theme="light"] .form-input {
+  background: rgba(255,255,255,0.26) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-color: rgba(255,255,255,0.55) !important;
+  color: hsl(0,0%,10%) !important;
+}
+
+[data-theme="light"] .icon-box {
+  background: rgba(255,255,255,0.28) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07) !important;
+}
+[data-theme="light"] .icon-box::before {
+  background: rgba(255,255,255,0.38) !important;
+}
+
+[data-theme="light"] .info_more-btn {
+  background: rgba(255,255,255,0.26) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+[data-theme="light"] .info_more-btn::before {
+  background: rgba(255,255,255,0.34) !important;
+}
+
+/* ── Same fix for auto light mode (no toggle pressed) ── */
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) body { background: hsl(220, 16%, 86%); }
+
+  html:not([data-theme="dark"]) .sidebar,
+  html:not([data-theme="dark"]) article {
+    background: rgba(255,255,255,0.26);
+    backdrop-filter: blur(24px) saturate(190%);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
+    border: 1px solid rgba(255,255,255,0.58);
+    box-shadow: 0 8px 32px rgba(90,100,160,0.14),
+                0 1px 0 rgba(255,255,255,0.82) inset;
+  }
+
+  html:not([data-theme="dark"]) .navbar {
+    background: rgba(255,255,255,0.28);
+    backdrop-filter: blur(24px) saturate(190%);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
+    border-color: rgba(255,255,255,0.52);
+  }
+
+  html:not([data-theme="dark"]) .service-item {
+    background: rgba(255,255,255,0.22);
+    backdrop-filter: blur(20px) saturate(190%);
+    -webkit-backdrop-filter: blur(20px) saturate(190%);
+    border: 1px solid rgba(255,255,255,0.58);
+    box-shadow: 0 4px 20px rgba(90,100,160,0.10),
+                0 1px 0 rgba(255,255,255,0.82) inset;
+  }
+
+  html:not([data-theme="dark"]) .content-card {
+    background: rgba(255,255,255,0.22);
+    backdrop-filter: blur(20px) saturate(190%);
+    -webkit-backdrop-filter: blur(20px) saturate(190%);
+    border: 1px solid rgba(255,255,255,0.52);
+  }
+
+  html:not([data-theme="dark"]) .about-text {
+    background: rgba(255,255,255,0.22);
+    backdrop-filter: blur(20px) saturate(190%);
+    -webkit-backdrop-filter: blur(20px) saturate(190%);
+    border: 1px solid rgba(255,255,255,0.52);
+  }
+
+  html:not([data-theme="dark"]) .form-input {
+    background: rgba(255,255,255,0.26);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(255,255,255,0.55);
+    color: hsl(0,0%,10%);
+  }
+
+  html:not([data-theme="dark"]) .icon-box {
+    background: rgba(255,255,255,0.28);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  html:not([data-theme="dark"]) .icon-box::before {
+    background: rgba(255,255,255,0.38);
+  }
+}
