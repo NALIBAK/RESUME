@@ -12,6 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Prevent flash of wrong theme -->
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 </head>
 
 <body>
@@ -327,6 +329,12 @@
       </article> 
     </div>
   </main>
+
+  <!-- Floating theme toggle -->
+  <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle light/dark mode">
+    <span class="icon-moon">🌙</span>
+    <span class="icon-sun">☀️</span>
+  </button>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script type="module" src="./assets/js/script.js"></script>

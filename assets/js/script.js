@@ -57,3 +57,23 @@ navigationLinks.forEach((link, index) => {
     window.scrollTo(0, 0);
   });
 });
+
+// ── Theme Toggle ──
+(function () {
+  const html = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') html.setAttribute('data-theme', 'light');
+
+  document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isLight = html.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  });
+})();

@@ -1634,3 +1634,224 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+
+
+
+
+/*-----------------------------------*\
+  #THEME TOGGLE BUTTON
+\*-----------------------------------*/
+
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: hsla(240, 1%, 17%, 0.80);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: hsl(45, 100%, 72%);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 200;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s cubic-bezier(0.23,1,0.32,1),
+              box-shadow 0.3s ease,
+              background 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.12) rotate(15deg);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.55);
+}
+
+.theme-toggle-btn .icon-sun  { display: none; }
+.theme-toggle-btn .icon-moon { display: block; }
+
+[data-theme="light"] .theme-toggle-btn .icon-sun  { display: block; }
+[data-theme="light"] .theme-toggle-btn .icon-moon { display: none; }
+
+[data-theme="light"] .theme-toggle-btn {
+  background: rgba(255,255,255,0.82);
+  border-color: rgba(0,0,0,0.12);
+  color: hsl(45, 100%, 40%);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+
+
+
+/*-----------------------------------*\
+  #LIQUID GLASS UPGRADES (dark default)
+\*-----------------------------------*/
+
+/* Sidebar & article panels */
+.sidebar,
+article {
+  background: rgba(36,36,38,0.75);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.09);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.50),
+              0 1px 0 rgba(255,255,255,0.07) inset;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Navbar bottom bar */
+.navbar {
+  background: hsla(240, 1%, 12%, 0.80);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* Service cards */
+.service-item {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255,255,255,0.09);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.40),
+              0 1px 0 rgba(255,255,255,0.07) inset;
+}
+
+.service-item::before { background: transparent; }
+
+/* Content card (skills bg) */
+.content-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.content-card::before { background: transparent; }
+
+/* About text block */
+.about-text {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+/* Form inputs */
+.form-input {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(255,255,255,0.10);
+  color: var(--white-2);
+}
+
+
+
+
+/*-----------------------------------*\
+  #LIGHT THEME
+\*-----------------------------------*/
+
+[data-theme="light"] {
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(0,0%,92%) 3%, hsl(0,0%,96%) 97%);
+  --bg-gradient-jet:  linear-gradient(to bottom right, hsla(240,1%,88%,0.5) 0%, hsla(240,2%,92%,0) 100%), hsl(0,0%,95%);
+  --border-gradient-onyx: linear-gradient(to bottom right, hsl(0,0%,80%) 0%, hsla(0,0%,80%,0) 50%);
+  --jet:               hsl(0, 0%, 82%);
+  --onyx:              hsl(0, 0%, 90%);
+  --eerie-black-1:     hsl(0, 0%, 96%);
+  --eerie-black-2:     hsl(0, 0%, 98%);
+  --smoky-black:       hsl(0, 0%, 96%);
+  --white-1:           hsl(0, 0%, 15%);
+  --white-2:           hsl(0, 0%, 12%);
+  --light-gray:        hsl(0, 0%, 30%);
+  --light-gray-70:     hsla(0, 0%, 30%, 0.7);
+  --vegas-gold:        hsl(38, 80%, 38%);
+  --shadow-1: -4px 8px 24px hsla(0,0%,0%,0.10);
+  --shadow-2: 0 16px 30px  hsla(0,0%,0%,0.10);
+  --shadow-3: 0 16px 40px  hsla(0,0%,0%,0.08);
+  --shadow-4: 0 25px 50px  hsla(0,0%,0%,0.08);
+  --shadow-5: 0 24px 80px  hsla(0,0%,0%,0.10);
+}
+
+[data-theme="light"] body { background: hsl(0,0%,93%); }
+
+/* Light liquid glass panels */
+[data-theme="light"] .sidebar,
+[data-theme="light"] article {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.85);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10),
+              0 1px 0 rgba(255,255,255,0.95) inset;
+}
+
+[data-theme="light"] .navbar {
+  background: rgba(255,255,255,0.80);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .service-item {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.90);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08),
+              0 1px 0 rgba(255,255,255,0.95) inset;
+}
+
+[data-theme="light"] .content-card {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.90);
+}
+
+[data-theme="light"] .about-text {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.85);
+}
+
+[data-theme="light"] .form-input {
+  background: rgba(255,255,255,0.60);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(0,0,0,0.12);
+  color: hsl(0,0%,12%);
+}
+
+[data-theme="light"] .skill-progress-bg { background: hsl(0,0%,85%); }
+
+[data-theme="light"] .separator { background: rgba(0,0,0,0.10); }
+
+[data-theme="light"] .icon-box {
+  background: rgba(255,255,255,0.70);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+[data-theme="light"] .icon-box::before { background: rgba(255,255,255,0.80); }
+
+[data-theme="light"] .info_more-btn {
+  background: rgba(255,255,255,0.70);
+}
+[data-theme="light"] .info_more-btn::before {
+  background: rgba(255,255,255,0.80);
+}
+
+[data-theme="light"] .navbar-link { color: hsl(0,0%,30%); }
+[data-theme="light"] .navbar-link.active { color: hsl(45,100%,40%); }
+
+/* Smooth theme transitions */
+body, .sidebar, article, .navbar, .service-item,
+.content-card, .about-text, .form-input, .icon-box,
+.info_more-btn, .separator, .skill-progress-bg {
+  transition: background 0.35s ease, border-color 0.35s ease,
+              color 0.35s ease, box-shadow 0.35s ease;
+}

@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Prevent flash of wrong theme -->
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 
   <style>
     /* ── CSS CUSTOM PROPERTIES ── */
@@ -53,6 +55,45 @@
         --ghost-bg:      rgba(0,0,0,0.04);
         --ghost-hover:   rgba(0,0,0,0.09);
       }
+    }
+
+    /* Manual light theme (overrides media query) */
+    [data-theme="light"] {
+      --bg-page:       #f2f2f7;
+      --bg-card:       rgba(255,255,255,0.55);
+      --bg-card-solid: #f5f5f7;
+      --border-card:   rgba(255,255,255,0.90);
+      --shadow-card:   0 8px 40px rgba(100,110,200,0.13), 0 1px 0 rgba(255,255,255,0.95) inset;
+      --shadow-hover:  0 24px 60px rgba(100,110,200,0.22);
+      --text-h:        #1c1c1e;
+      --text-body:     #3a3a3c;
+      --text-muted:    #6e6e73;
+      --nav-bg:        rgba(255,255,255,0.78);
+      --nav-border:    rgba(0,0,0,0.10);
+      --shine-top:     rgba(255,255,255,0.55);
+      --shine-bot:     rgba(0,0,0,0.04);
+      --ghost-border:  rgba(0,0,0,0.14);
+      --ghost-bg:      rgba(0,0,0,0.04);
+      --ghost-hover:   rgba(0,0,0,0.09);
+    }
+    /* Manual dark override (when system is light but user chose dark) */
+    [data-theme="dark"] {
+      --bg-page:       #1e1e1f;
+      --bg-card:       rgba(255,255,255,0.06);
+      --bg-card-solid: #2b2b2c;
+      --border-card:   rgba(255,255,255,0.13);
+      --shadow-card:   0 8px 40px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.10) inset;
+      --shadow-hover:  0 28px 70px rgba(0,0,0,0.75);
+      --text-h:        #ffffff;
+      --text-body:     #d6d6d6;
+      --text-muted:    #a8a8b3;
+      --nav-bg:        rgba(30,30,31,0.78);
+      --nav-border:    rgba(255,255,255,0.09);
+      --shine-top:     rgba(255,255,255,0.12);
+      --shine-bot:     rgba(255,255,255,0.13);
+      --ghost-border:  rgba(255,255,255,0.18);
+      --ghost-bg:      rgba(255,255,255,0.05);
+      --ghost-hover:   rgba(255,255,255,0.11);
     }
 
     /* ── RESET & BASE ── */
@@ -363,6 +404,30 @@
       .page-title { font-size: 32px; }
       .nav-links { display: none; }
     }
+
+    /* ── THEME TOGGLE BUTTON ── */
+    .theme-toggle-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 18px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--ghost-border);
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--accent);
+      font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 200;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      transition: transform 0.3s cubic-bezier(0.23,1,0.32,1), box-shadow 0.3s ease;
+    }
+    .theme-toggle-btn:hover {
+      transform: scale(1.12) rotate(15deg);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.5);
+    }
+    /* icon visibility controlled by JS syncIcons() */
   </style>
 </head>
 
@@ -539,6 +604,48 @@
     <p>© 2025 Kabilan S S — Built with passion</p>
   </footer>
 
+
+  <!-- Floating theme toggle -->
+  <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle light/dark mode">
+    <span class="icon-moon">🌙</span>
+    <span class="icon-sun">☀️</span>
+  </button>
+
+  <script>
+    // Theme toggle (projects.html — standalone, no script.js)
+    (function () {
+      var html = document.documentElement;
+      var btn  = document.getElementById('theme-toggle-btn');
+      if (!btn) return;
+
+      // Sync icon visibility on load
+      function syncIcons() {
+        var isLight = html.getAttribute('data-theme') === 'light';
+        // For dark system preference, also check no data-theme means dark
+        var systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var currentlyLight = isLight || (systemLight && html.getAttribute('data-theme') !== 'dark');
+        btn.querySelector('.icon-moon').style.display = currentlyLight ? 'none'  : 'block';
+        btn.querySelector('.icon-sun').style.display  = currentlyLight ? 'block' : 'none';
+      }
+
+      btn.addEventListener('click', function () {
+        var systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var curAttr = html.getAttribute('data-theme');
+        // Determine effective current state
+        var currentlyLight = curAttr === 'light' || (systemLight && curAttr !== 'dark');
+        if (currentlyLight) {
+          html.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          html.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+        }
+        syncIcons();
+      });
+
+      syncIcons();
+    })();
+  </script>
 
 </body>
 </html>
